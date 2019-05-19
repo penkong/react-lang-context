@@ -7,12 +7,14 @@ class Button extends Component {
   //static means it is for comp itself
   // static contextType = LanguageContext;
   //now we have this.context here
-
+  renderSubmit(language){
+    return language === 'english' ? 'submit' : 'voorleggen';
+  }
   renderButton(color){
     return (
       <button className={`ui ${color} button`}>
         <LanguageContext.Consumer>
-          {(value)=>value === 'english' ? 'submit' : 'voorleggen'}
+          {({language})=> this.renderSubmit(language)}
         </LanguageContext.Consumer>
       </button>
     );
